@@ -73,7 +73,7 @@ namespace ToDo_App.Infrastructure.Repositories
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -111,10 +111,10 @@ namespace ToDo_App.Infrastructure.Repositories
 
                     connection.Close();
 
-                    return result > 0 ? true : false;
+                    return result > 0;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

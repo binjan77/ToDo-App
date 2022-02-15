@@ -6,7 +6,6 @@
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <UserSecretsId>ddce3158-a99b-4fa3-ac3c-1f59b05d787f</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
