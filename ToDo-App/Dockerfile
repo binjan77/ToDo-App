@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["ToDo-App/ToDo-App.csproj", "ToDo-App/"]
+COPY ["ToDo-App.csproj", "ToDo-App/"]
 RUN dotnet restore "ToDo-App/ToDo-App.csproj"
 COPY . .
 WORKDIR "/src/ToDo-App"
