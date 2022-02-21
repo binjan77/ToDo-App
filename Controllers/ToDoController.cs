@@ -66,7 +66,17 @@ namespace ToDo_App.Controllers
         // GET: ToDoController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            try
+            {
+                ToDoRepository toDoRepository = new ToDoRepository(_configuration, HttpContext.User);
+                ToDoModel toDo = toDoRepository.GetToDo(id);
+
+                return View(toDo);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: ToDoController/Edit/5
@@ -76,6 +86,21 @@ namespace ToDo_App.Controllers
         {
             try
             {
+                StringValues title;
+                collection.TryGetValue("Title", out title);
+
+                StringValues description;
+                collection.TryGetValue("Description", out description);
+
+                ToDoModel toDoModel = new ToDoModel()
+                {
+                    Title = title.ToString(),
+                    Description = description.ToString()
+                };
+
+                ToDoRepository toDoRepository = new ToDoRepository(_configuration, HttpContext.User);
+                bool isInsert = toDoRepository.Update(id, toDoModel);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,7 +112,17 @@ namespace ToDo_App.Controllers
         // GET: ToDoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                ToDoRepository toDoRepository = new ToDoRepository(_configuration, HttpContext.User);
+                ToDoModel toDo = toDoRepository.GetToDo(id);
+
+                return View(toDo);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: ToDoController/Delete/5
@@ -97,6 +132,9 @@ namespace ToDo_App.Controllers
         {
             try
             {
+                ToDoRepository toDoRepository = new ToDoRepository(_configuration, HttpContext.User);
+                bool isInsert = toDoRepository.Delete(id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
